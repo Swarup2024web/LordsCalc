@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lords Mobile Troop Counter Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Lords Mobile Troop Counter Calculator</h1>
+        <p>Enter enemy troop counts to calculate your counter troops.</p>
+    </header>
+
+    <main>
+        <form id="troopCalculator">
+            <div class="input-group">
+                <label for="infantry">Enemy Infantry (Royal Guard):</label>
+                <input type="number" id="infantry" placeholder="Enter Infantry Count">
+            </div>
+            <div class="input-group">
+                <label for="ranged">Enemy Ranged (Stealth Sniper):</label>
+                <input type="number" id="ranged" placeholder="Enter Ranged Count">
+            </div>
+            <div class="input-group">
+                <label for="cavalry">Enemy Cavalry:</label>
+                <input type="number" id="cavalry" placeholder="Enter Cavalry Count">
+            </div>
+            <div class="input-group">
+                <label for="siege">Enemy Siege (Fire Bucket):</label>
+                <input type="number" id="siege" placeholder="Enter Siege Count">
+            </div>
+            <button type="button" onclick="calculateTroops()">Calculate</button>
+        </form>
+
+        <section id="results">
+            <h2>Results:</h2>
+            <div id="output"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ for Lords Mobile fans.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
