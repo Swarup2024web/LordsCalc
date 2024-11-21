@@ -1,5 +1,5 @@
 function calculateTroops() {
-    // Getting the values of enemy troops (numbers entered by the user)
+    // Get values from the inputs
     let t1_1 = parseInt(document.getElementById('t1_1').value) || 0;
     let t1_2 = parseInt(document.getElementById('t1_2').value) || 0;
     let t1_3 = parseInt(document.getElementById('t1_3').value) || 0;
@@ -25,69 +25,59 @@ function calculateTroops() {
     let t5_3 = parseInt(document.getElementById('t5_3').value) || 0;
     let t5_4 = parseInt(document.getElementById('t5_4').value) || 0;
 
-    // Getting the selected troop tier from the dropdown
+    // Get the selected tier from the dropdown
     let selectedTier = document.getElementById('troopTier').value;
 
-    // Defining the recommended troops output element
-    let outputElement = document.getElementById('output');
-
-    // Perform the calculations and generate the result based on the selected tier
+    // Initialize the recommended troops array
     let recommendedTroops = [];
-    
-    switch (selectedTier) {
-        case 'T1':
-            recommendedTroops = [
-                { name: 'Grunts', count: Math.ceil(t1_1 * 0.5) },
-                { name: 'Archer', count: Math.ceil(t1_2 * 0.5) },
-                { name: 'Cataphract', count: Math.ceil(t1_3 * 0.5) },
-                { name: 'Ballista', count: Math.ceil(t1_4 * 0.5) }
-            ];
-            break;
-        case 'T2':
-            recommendedTroops = [
-                { name: 'Gladiator', count: Math.ceil(t2_1 * 0.5) },
-                { name: 'Sharpshooter', count: Math.ceil(t2_2 * 0.5) },
-                { name: 'Reptilian Rider', count: Math.ceil(t2_3 * 0.5) },
-                { name: 'Catapult', count: Math.ceil(t2_4 * 0.5) }
-            ];
-            break;
-        case 'T3':
-            recommendedTroops = [
-                { name: 'Royal Guard', count: Math.ceil(t3_1 * 0.5) },
-                { name: 'Stealth Sniper', count: Math.ceil(t3_2 * 0.5) },
-                { name: 'Royal Cavalry', count: Math.ceil(t3_3 * 0.5) },
-                { name: 'Fire Trebuchet', count: Math.ceil(t3_4 * 0.5) }
-            ];
-            break;
-        case 'T4':
-            recommendedTroops = [
-                { name: 'Heroic Fighter', count: Math.ceil(t4_1 * 0.5) },
-                { name: 'Heroic Cannoneer', count: Math.ceil(t4_2 * 0.5) },
-                { name: 'Ancient Drake Rider', count: Math.ceil(t4_3 * 0.5) },
-                { name: 'Destroyer', count: Math.ceil(t4_4 * 0.5) }
-            ];
-            break;
-        case 'T5':
-            recommendedTroops = [
-                { name: 'Luminary Avenger', count: Math.ceil(t5_1 * 0.5) },
-                { name: 'Gawrilla', count: Math.ceil(t5_2 * 0.5) },
-                { name: 'Necrosis', count: Math.ceil(t5_3 * 0.5) },
-                { name: 'Gear', count: Math.ceil(t5_4 * 0.5) }
-            ];
-            break;
-        default:
-            recommendedTroops = [];
+
+    // Perform the calculation based on the selected tier
+    if (selectedTier === "T1") {
+        recommendedTroops = [
+            { name: "Grunts", amount: t1_1 },
+            { name: "Archer", amount: t1_2 },
+            { name: "Cataphract", amount: t1_3 },
+            { name: "Ballista", amount: t1_4 }
+        ];
+    } else if (selectedTier === "T2") {
+        recommendedTroops = [
+            { name: "Gladiator", amount: t2_1 },
+            { name: "Sharpshooter", amount: t2_2 },
+            { name: "Reptilian Rider", amount: t2_3 },
+            { name: "Catapult", amount: t2_4 }
+        ];
+    } else if (selectedTier === "T3") {
+        recommendedTroops = [
+            { name: "Royal Guard", amount: t3_1 },
+            { name: "Stealth Sniper", amount: t3_2 },
+            { name: "Royal Cavalry", amount: t3_3 },
+            { name: "Fire Trebuchet", amount: t3_4 }
+        ];
+    } else if (selectedTier === "T4") {
+        recommendedTroops = [
+            { name: "Heroic Fighter", amount: t4_1 },
+            { name: "Heroic Cannoneer", amount: t4_2 },
+            { name: "Ancient Drake Rider", amount: t4_3 },
+            { name: "Destroyer", amount: t4_4 }
+        ];
+    } else if (selectedTier === "T5") {
+        recommendedTroops = [
+            { name: "Luminary Avenger", amount: t5_1 },
+            { name: "Gawrilla", amount: t5_2 },
+            { name: "Necrosis", amount: t5_3 },
+            { name: "Gear", amount: t5_4 }
+        ];
     }
 
-    // Display the recommended troops and their counts
-    if (recommendedTroops.length > 0) {
-        let outputHTML = `<h2>Recommended Troops for ${selectedTier}</h2><ul>`;
-        recommendedTroops.forEach(troop => {
-            outputHTML += `<li><strong>${troop.name}</strong>: ${troop.count}</li>`;
-        });
-        outputHTML += `</ul>`;
-        outputElement.innerHTML = outputHTML;
-    } else {
-        outputElement.innerHTML = `<p>Please enter enemy troop data and select a tier to calculate.</p>`;
-    }
+    // Generate the output HTML
+    let outputHTML = `<h2>Recommended ${selectedTier} Troops:</h2><ul>`;
+    recommendedTroops.forEach(troop => {
+        if (troop.amount > 0) {
+            outputHTML += `<li>${troop.name}: ${troop.amount}</li>`;
         }
+    });
+    outputHTML += `</ul>`;
+
+    // Display the result
+    document.getElementById('output').innerHTML = outputHTML;
+}
