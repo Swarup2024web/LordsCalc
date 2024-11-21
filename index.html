@@ -10,91 +10,72 @@
 
     <div class="container">
         <h1>Troop Calculator</h1>
-        <form id="troopForm">
-            <div class="input-container">
-                <h3>Enemy Troops (Enter numbers)</h3>
 
-                <!-- T1 Troops -->
-                <div class="troop-group">
-                    <h4>Tier 1 Troops</h4>
-                    <div class="troop-boxes">
-                        <input type="number" id="t1_1" placeholder="Grunts">
-                        <input type="number" id="t1_2" placeholder="Archer">
-                        <input type="number" id="t1_3" placeholder="Cataphract">
-                        <input type="number" id="t1_4" placeholder="Ballista">
-                    </div>
-                </div>
-
-                <!-- T2 Troops -->
-                <div class="troop-group">
-                    <h4>Tier 2 Troops</h4>
-                    <div class="troop-boxes">
-                        <input type="number" id="t2_1" placeholder="Gladiator">
-                        <input type="number" id="t2_2" placeholder="Sharpshooter">
-                        <input type="number" id="t2_3" placeholder="Reptilian Rider">
-                        <input type="number" id="t2_4" placeholder="Catapult">
-                    </div>
-                </div>
-
-                <!-- T3 Troops -->
-                <div class="troop-group">
-                    <h4>Tier 3 Troops</h4>
-                    <div class="troop-boxes">
-                        <input type="number" id="t3_1" placeholder="Royal Guard">
-                        <input type="number" id="t3_2" placeholder="Stealth Sniper">
-                        <input type="number" id="t3_3" placeholder="Royal Cavalry">
-                        <input type="number" id="t3_4" placeholder="Fire Trebuchet">
-                    </div>
-                </div>
-
-                <!-- T4 Troops -->
-                <div class="troop-group">
-                    <h4>Tier 4 Troops</h4>
-                    <div class="troop-boxes">
-                        <input type="number" id="t4_1" placeholder="Heroic Fighter">
-                        <input type="number" id="t4_2" placeholder="Heroic Cannoneer">
-                        <input type="number" id="t4_3" placeholder="Ancient Drake Rider">
-                        <input type="number" id="t4_4" placeholder="Destroyer">
-                    </div>
-                </div>
-
-                <!-- T5 Troops -->
-                <div class="troop-group">
-                    <h4>Tier 5 Troops</h4>
-                    <div class="troop-boxes">
-                        <input type="number" id="t5_1" placeholder="Luminary Avenger">
-                        <input type="number" id="t5_2" placeholder="Gawrilla">
-                        <input type="number" id="t5_3" placeholder="Necrosis">
-                        <input type="number" id="t5_4" placeholder="Gear">
-                    </div>
-                </div>
+        <div class="troops">
+            <!-- T1 Troops -->
+            <div class="tier">
+                <h2>T1 Troops</h2>
+                <input type="number" id="t1_1" placeholder="Grunts">
+                <input type="number" id="t1_2" placeholder="Archer">
+                <input type="number" id="t1_3" placeholder="Cataphract">
+                <input type="number" id="t1_4" placeholder="Ballista">
             </div>
 
-            <!-- Dropdown for Selecting Tier -->
-            <div class="tier-selection">
-                <label for="troopTier">Select Troop Tier: </label>
-                <select id="troopTier">
-                    <option value="T1">T1</option>
-                    <option value="T2">T2</option>
-                    <option value="T3">T3</option>
-                    <option value="T4">T4</option>
-                    <option value="T5">T5</option>
-                </select>
+            <!-- T2 Troops -->
+            <div class="tier">
+                <h2>T2 Troops</h2>
+                <input type="number" id="t2_1" placeholder="Gladiator">
+                <input type="number" id="t2_2" placeholder="Sharpshooter">
+                <input type="number" id="t2_3" placeholder="Reptilian Rider">
+                <input type="number" id="t2_4" placeholder="Catapult">
             </div>
 
-            <!-- Calculate Button -->
-            <div class="calculate-btn">
-                <button type="button" onclick="calculateTroops()">Calculate</button>
+            <!-- T3 Troops -->
+            <div class="tier">
+                <h2>T3 Troops</h2>
+                <input type="number" id="t3_1" placeholder="Royal Guard">
+                <input type="number" id="t3_2" placeholder="Stealth Sniper">
+                <input type="number" id="t3_3" placeholder="Royal Cavalry">
+                <input type="number" id="t3_4" placeholder="Fire Trebuchet">
             </div>
-        </form>
 
-        <!-- Output Area for Recommended Troops -->
-        <div id="output" class="output">
-            <h2>Recommended Troops</h2>
-            <p>Please enter enemy troop data and select a tier to calculate.</p>
+            <!-- T4 Troops -->
+            <div class="tier">
+                <h2>T4 Troops</h2>
+                <input type="number" id="t4_1" placeholder="Heroic Fighter">
+                <input type="number" id="t4_2" placeholder="Heroic Cannoneer">
+                <input type="number" id="t4_3" placeholder="Ancient Drake Rider">
+                <input type="number" id="t4_4" placeholder="Destroyer">
+            </div>
+
+            <!-- T5 Troops -->
+            <div class="tier">
+                <h2>T5 Troops</h2>
+                <input type="number" id="t5_1" placeholder="Luminary Avenger">
+                <input type="number" id="t5_2" placeholder="Gawrilla">
+                <input type="number" id="t5_3" placeholder="Necrosis">
+                <input type="number" id="t5_4" placeholder="Gear">
+            </div>
         </div>
+
+        <div class="tier-select">
+            <select id="troopTier">
+                <option value="T1">T1 Troops</option>
+                <option value="T2">T2 Troops</option>
+                <option value="T3">T3 Troops</option>
+                <option value="T4">T4 Troops</option>
+                <option value="T5">T5 Troops</option>
+            </select>
+        </div>
+
+        <div class="calculate-btn">
+            <button onclick="calculateTroops()">Calculate</button>
+        </div>
+
+        <div id="output"></div>
+
     </div>
 
     <script src="script.js"></script>
 </body>
-                </html>
+</html>
