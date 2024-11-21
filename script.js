@@ -1,43 +1,72 @@
 function calculateTroops() {
-    // Get input values
-    const t1 = parseInt(document.getElementById("t1").value) || 0;
-    const t2 = parseInt(document.getElementById("t2").value) || 0;
-    const t3 = parseInt(document.getElementById("t3").value) || 0;
-    const t5 = parseInt(document.getElementById("t5").value) || 0;
-    
-    const selectedTier = document.getElementById("troopTier").value;
+    // Retrieve values from the input fields
+    const t1_1 = parseInt(document.getElementById('t1_1').value) || 0;
+    const t1_2 = parseInt(document.getElementById('t1_2').value) || 0;
+    const t1_3 = parseInt(document.getElementById('t1_3').value) || 0;
+    const t1_4 = parseInt(document.getElementById('t1_4').value) || 0;
+    const t2_1 = parseInt(document.getElementById('t2_1').value) || 0;
+    const t2_2 = parseInt(document.getElementById('t2_2').value) || 0;
+    const t2_3 = parseInt(document.getElementById('t2_3').value) || 0;
+    const t2_4 = parseInt(document.getElementById('t2_4').value) || 0;
+    const t3_1 = parseInt(document.getElementById('t3_1').value) || 0;
+    const t3_2 = parseInt(document.getElementById('t3_2').value) || 0;
+    const t3_3 = parseInt(document.getElementById('t3_3').value) || 0;
+    const t3_4 = parseInt(document.getElementById('t3_4').value) || 0;
+    const t5_1 = parseInt(document.getElementById('t5_1').value) || 0;
+    const t5_2 = parseInt(document.getElementById('t5_2').value) || 0;
+    const t5_3 = parseInt(document.getElementById('t5_3').value) || 0;
+    const t5_4 = parseInt(document.getElementById('t5_4').value) || 0;
 
-    let recommendedTroops = '';
+    // Calculate total enemy troops
+    const totalEnemyTroops = t1_1 + t1_2 + t1_3 + t1_4 +
+                              t2_1 + t2_2 + t2_3 + t2_4 +
+                              t3_1 + t3_2 + t3_3 + t3_4 +
+                              t5_1 + t5_2 + t5_3 + t5_4;
 
-    // Troop Might Values (Example values for each tier)
-    const troopMight = {
-        T1: 5,
-        T2: 10,
-        T3: 15,
-        T4: 25,
-        T5: 50
+    // Retrieve selected troop tier from dropdown
+    const selectedTier = document.getElementById('troopTier').value;
+
+    // Initialize recommended troops object
+    let recommendedTroops = {
+        T1: { RoyalGuard: 0, Footman: 0, Archer: 0, Scout: 0 },
+        T2: { StealthSniper: 0, Pikeman: 0, Swordsman: 0, FlameKnight: 0 },
+        T3: { AncientDrake: 0, Chiron: 0, Gargantua: 0, Phoenix: 0 },
+        T5: { FireBucket: 0, Colossus: 0, Behemoth: 0, Hercules: 0 }
     };
 
-    // Calculate total enemy might
-    const totalEnemyMight = (t1 * troopMight.T1) + (t2 * troopMight.T2) + (t3 * troopMight.T3) + (t5 * troopMight.T5);
-
-    // Generate recommendation based on selected tier
-    if (selectedTier === "T1") {
-        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T1);
-    } else if (selectedTier === "T2") {
-        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T2);
-    } else if (selectedTier === "T3") {
-        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T3);
-    } else if (selectedTier === "T4") {
-        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T4);
-    } else if (selectedTier === "T5") {
-        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T5);
+    // Based on enemy troops, calculate recommended counters (sample logic)
+    if (selectedTier === 'T1') {
+        recommendedTroops.T1.RoyalGuard = Math.ceil(t1_1 / 5);
+        recommendedTroops.T1.Footman = Math.ceil(t1_2 / 5);
+        recommendedTroops.T1.Archer = Math.ceil(t1_3 / 5);
+        recommendedTroops.T1.Scout = Math.ceil(t1_4 / 5);
+    } else if (selectedTier === 'T2') {
+        recommendedTroops.T2.StealthSniper = Math.ceil(t2_1 / 4);
+        recommendedTroops.T2.Pikeman = Math.ceil(t2_2 / 4);
+        recommendedTroops.T2.Swordsman = Math.ceil(t2_3 / 4);
+        recommendedTroops.T2.FlameKnight = Math.ceil(t2_4 / 4);
+    } else if (selectedTier === 'T3') {
+        recommendedTroops.T3.AncientDrake = Math.ceil(t3_1 / 3);
+        recommendedTroops.T3.Chiron = Math.ceil(t3_2 / 3);
+        recommendedTroops.T3.Gargantua = Math.ceil(t3_3 / 3);
+        recommendedTroops.T3.Phoenix = Math.ceil(t3_4 / 3);
+    } else if (selectedTier === 'T5') {
+        recommendedTroops.T5.FireBucket = Math.ceil(t5_1 / 2);
+        recommendedTroops.T5.Colossus = Math.ceil(t5_2 / 2);
+        recommendedTroops.T5.Behemoth = Math.ceil(t5_3 / 2);
+        recommendedTroops.T5.Hercules = Math.ceil(t5_4 / 2);
     }
 
-    // Output the results
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = `
-        <p>Total Enemy Might: ${totalEnemyMight}</p>
-        <p>Recommended Troops for ${selectedTier}: ${recommendedTroops}</p>
-    `;
-}
+    // Display the recommended troops in the output section
+    const outputDiv = document.getElementById('output');
+    let resultHtml = `<p>Total Enemy Troops: ${totalEnemyTroops}</p><ul>`;
+
+    // Iterate through the selected tier's troops
+    for (let troopType in recommendedTroops[selectedTier]) {
+        let troopCount = recommendedTroops[selectedTier][troopType];
+        resultHtml += `<li><strong>${troopType}:</strong> ${troopCount} troops</li>`;
+    }
+
+    resultHtml += `</ul>`;
+    outputDiv.innerHTML = resultHtml;
+        }
