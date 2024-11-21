@@ -90,4 +90,4 @@ function calculateTroops() {
     } else {
         outputElement.innerHTML = `<p>Please enter enemy troop data and select a tier to calculate.</p>`;
     }
-                 }
+        }
