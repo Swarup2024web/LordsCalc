@@ -1,29 +1,43 @@
 function calculateTroops() {
     // Get input values
-    const infantry = parseInt(document.getElementById("infantry").value) || 0;
-    const ranged = parseInt(document.getElementById("ranged").value) || 0;
-    const cavalry = parseInt(document.getElementById("cavalry").value) || 0;
-    const siege = parseInt(document.getElementById("siege").value) || 0;
+    const t1 = parseInt(document.getElementById("t1").value) || 0;
+    const t2 = parseInt(document.getElementById("t2").value) || 0;
+    const t3 = parseInt(document.getElementById("t3").value) || 0;
+    const t5 = parseInt(document.getElementById("t5").value) || 0;
+    
+    const selectedTier = document.getElementById("troopTier").value;
 
-    // Troop Might Values (T3)
-    const T3Might = 8;
-    const T4Might = 36;
+    let recommendedTroops = '';
 
-    // Calculate enemy total might
-    const totalMight = (infantry + ranged + cavalry + siege) * T3Might;
+    // Troop Might Values (Example values for each tier)
+    const troopMight = {
+        T1: 5,
+        T2: 10,
+        T3: 15,
+        T4: 25,
+        T5: 50
+    };
 
-    // Calculate the recommended T4 counter troops
-    const rangedCounter = Math.ceil((infantry * T3Might) / T4Might);
-    const cavalryCounter = Math.ceil((ranged * T3Might) / T4Might);
+    // Calculate total enemy might
+    const totalEnemyMight = (t1 * troopMight.T1) + (t2 * troopMight.T2) + (t3 * troopMight.T3) + (t5 * troopMight.T5);
+
+    // Generate recommendation based on selected tier
+    if (selectedTier === "T1") {
+        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T1);
+    } else if (selectedTier === "T2") {
+        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T2);
+    } else if (selectedTier === "T3") {
+        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T3);
+    } else if (selectedTier === "T4") {
+        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T4);
+    } else if (selectedTier === "T5") {
+        recommendedTroops = Math.ceil(totalEnemyMight / troopMight.T5);
+    }
 
     // Output the results
     const outputDiv = document.getElementById("output");
     outputDiv.innerHTML = `
-        <p>Total Enemy Might: ${totalMight}</p>
-        <p>Recommended Troops to Counter:</p>
-        <ul>
-            <li><strong>${rangedCounter}</strong> T4 Sharpshooters (Ranged)</li>
-            <li><strong>${cavalryCounter}</strong> T4 Ancient Drake Riders (Cavalry)</li>
-        </ul>
+        <p>Total Enemy Might: ${totalEnemyMight}</p>
+        <p>Recommended Troops for ${selectedTier}: ${recommendedTroops}</p>
     `;
 }
