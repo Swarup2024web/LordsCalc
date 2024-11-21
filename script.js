@@ -12,6 +12,10 @@ function calculateTroops() {
     const t3_2 = parseInt(document.getElementById('t3_2').value) || 0;
     const t3_3 = parseInt(document.getElementById('t3_3').value) || 0;
     const t3_4 = parseInt(document.getElementById('t3_4').value) || 0;
+    const t4_1 = parseInt(document.getElementById('t4_1').value) || 0;
+    const t4_2 = parseInt(document.getElementById('t4_2').value) || 0;
+    const t4_3 = parseInt(document.getElementById('t4_3').value) || 0;
+    const t4_4 = parseInt(document.getElementById('t4_4').value) || 0;
     const t5_1 = parseInt(document.getElementById('t5_1').value) || 0;
     const t5_2 = parseInt(document.getElementById('t5_2').value) || 0;
     const t5_3 = parseInt(document.getElementById('t5_3').value) || 0;
@@ -21,6 +25,7 @@ function calculateTroops() {
     const totalEnemyTroops = t1_1 + t1_2 + t1_3 + t1_4 +
                               t2_1 + t2_2 + t2_3 + t2_4 +
                               t3_1 + t3_2 + t3_3 + t3_4 +
+                              t4_1 + t4_2 + t4_3 + t4_4 +
                               t5_1 + t5_2 + t5_3 + t5_4;
 
     // Retrieve selected troop tier from dropdown
@@ -31,6 +36,7 @@ function calculateTroops() {
         T1: { RoyalGuard: 0, Footman: 0, Archer: 0, Scout: 0 },
         T2: { StealthSniper: 0, Pikeman: 0, Swordsman: 0, FlameKnight: 0 },
         T3: { AncientDrake: 0, Chiron: 0, Gargantua: 0, Phoenix: 0 },
+        T4: { RoyalKnight: 0, Paladin: 0, DarkKnight: 0, EliteArcher: 0 },
         T5: { FireBucket: 0, Colossus: 0, Behemoth: 0, Hercules: 0 }
     };
 
@@ -50,6 +56,11 @@ function calculateTroops() {
         recommendedTroops.T3.Chiron = Math.ceil(t3_2 / 3);
         recommendedTroops.T3.Gargantua = Math.ceil(t3_3 / 3);
         recommendedTroops.T3.Phoenix = Math.ceil(t3_4 / 3);
+    } else if (selectedTier === 'T4') {
+        recommendedTroops.T4.RoyalKnight = Math.ceil(t4_1 / 2);
+        recommendedTroops.T4.Paladin = Math.ceil(t4_2 / 2);
+        recommendedTroops.T4.DarkKnight = Math.ceil(t4_3 / 2);
+        recommendedTroops.T4.EliteArcher = Math.ceil(t4_4 / 2);
     } else if (selectedTier === 'T5') {
         recommendedTroops.T5.FireBucket = Math.ceil(t5_1 / 2);
         recommendedTroops.T5.Colossus = Math.ceil(t5_2 / 2);
@@ -69,4 +80,4 @@ function calculateTroops() {
 
     resultHtml += `</ul>`;
     outputDiv.innerHTML = resultHtml;
-        }
+            }
