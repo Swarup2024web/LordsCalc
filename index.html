@@ -10,40 +10,49 @@
 
     <header>
         <h1>Lords Mobile Troop Counter Calculator</h1>
-        <p>Enter enemy troop counts to calculate your counter troops.</p>
+        <p>Enter enemy troop counts to calculate your recommended counter troops.</p>
     </header>
 
     <main>
-        <form id="troopCalculator">
-            <div class="input-group">
-                <label for="infantry">Enemy Infantry (Royal Guard):</label>
-                <input type="number" id="infantry" placeholder="Enter Infantry Count">
-            </div>
-            <div class="input-group">
-                <label for="ranged">Enemy Ranged (Stealth Sniper):</label>
-                <input type="number" id="ranged" placeholder="Enter Ranged Count">
-            </div>
-            <div class="input-group">
-                <label for="cavalry">Enemy Cavalry:</label>
-                <input type="number" id="cavalry" placeholder="Enter Cavalry Count">
-            </div>
-            <div class="input-group">
-                <label for="siege">Enemy Siege (Fire Bucket):</label>
-                <input type="number" id="siege" placeholder="Enter Siege Count">
-            </div>
-            <button type="button" onclick="calculateTroops()">Calculate</button>
-        </form>
+        <section class="calculator">
+            <form id="troopCalculator">
+                <div class="input-group">
+                    <label for="t1">Enemy T1 Troops:</label>
+                    <input type="number" id="t1" placeholder="Enter T1 Troop Count">
+                </div>
+                <div class="input-group">
+                    <label for="t2">Enemy T2 Troops:</label>
+                    <input type="number" id="t2" placeholder="Enter T2 Troop Count">
+                </div>
+                <div class="input-group">
+                    <label for="t3">Enemy T3 Troops:</label>
+                    <input type="number" id="t3" placeholder="Enter T3 Troop Count">
+                </div>
+                <div class="input-group">
+                    <label for="t5">Enemy T5 Troops:</label>
+                    <input type="number" id="t5" placeholder="Enter T5 Troop Count">
+                </div>
 
-        <section id="results">
-            <h2>Results:</h2>
-            <div id="output"></div>
+                <button type="button" onclick="calculateTroops()">Calculate</button>
+            </form>
+
+            <div class="tier-selector">
+                <label for="troopTier">Select Recommended Troop Tier:</label>
+                <select id="troopTier">
+                    <option value="T1">T1 Troops</option>
+                    <option value="T2">T2 Troops</option>
+                    <option value="T3">T3 Troops</option>
+                    <option value="T4">T4 Troops</option>
+                    <option value="T5">T5 Troops</option>
+                </select>
+            </div>
+
+            <section id="results">
+                <h2>Recommended Counter Troops:</h2>
+                <div id="output"></div>
+            </section>
         </section>
     </main>
-
-    <footer>
-        <p>Made with ❤️ for Lords Mobile fans.</p>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
