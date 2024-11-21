@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lords Mobile Troop Counter Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
@@ -19,39 +21,31 @@
                 <div class="tier">
                     <h3>Tier 1 Troops</h3>
                     <div class="input-group">
-                        <label for="t1_1">Royal Guard:</label>
                         <input type="number" id="t1_1" placeholder="Royal Guard (T1)">
                     </div>
                     <div class="input-group">
-                        <label for="t1_2">Footman:</label>
                         <input type="number" id="t1_2" placeholder="Footman (T1)">
                     </div>
                     <div class="input-group">
-                        <label for="t1_3">Scout:</label>
-                        <input type="number" id="t1_3" placeholder="Scout (T1)">
+                        <input type="number" id="t1_3" placeholder="Archer (T1)">
                     </div>
                     <div class="input-group">
-                        <label for="t1_4">Archer:</label>
-                        <input type="number" id="t1_4" placeholder="Archer (T1)">
+                        <input type="number" id="t1_4" placeholder="Scout (T1)">
                     </div>
                 </div>
 
                 <div class="tier">
                     <h3>Tier 2 Troops</h3>
                     <div class="input-group">
-                        <label for="t2_1">Stealth Sniper:</label>
                         <input type="number" id="t2_1" placeholder="Stealth Sniper (T2)">
                     </div>
                     <div class="input-group">
-                        <label for="t2_2">Pikeman:</label>
                         <input type="number" id="t2_2" placeholder="Pikeman (T2)">
                     </div>
                     <div class="input-group">
-                        <label for="t2_3">Swordsman:</label>
                         <input type="number" id="t2_3" placeholder="Swordsman (T2)">
                     </div>
                     <div class="input-group">
-                        <label for="t2_4">Flame Knight:</label>
                         <input type="number" id="t2_4" placeholder="Flame Knight (T2)">
                     </div>
                 </div>
@@ -59,19 +53,15 @@
                 <div class="tier">
                     <h3>Tier 3 Troops</h3>
                     <div class="input-group">
-                        <label for="t3_1">Ancient Drake:</label>
                         <input type="number" id="t3_1" placeholder="Ancient Drake (T3)">
                     </div>
                     <div class="input-group">
-                        <label for="t3_2">Chiron:</label>
                         <input type="number" id="t3_2" placeholder="Chiron (T3)">
                     </div>
                     <div class="input-group">
-                        <label for="t3_3">Gargantua:</label>
                         <input type="number" id="t3_3" placeholder="Gargantua (T3)">
                     </div>
                     <div class="input-group">
-                        <label for="t3_4">Phoenix:</label>
                         <input type="number" id="t3_4" placeholder="Phoenix (T3)">
                     </div>
                 </div>
@@ -79,24 +69,20 @@
                 <div class="tier">
                     <h3>Tier 5 Troops</h3>
                     <div class="input-group">
-                        <label for="t5_1">Fire Bucket:</label>
                         <input type="number" id="t5_1" placeholder="Fire Bucket (T5)">
                     </div>
                     <div class="input-group">
-                        <label for="t5_2">Colossus:</label>
                         <input type="number" id="t5_2" placeholder="Colossus (T5)">
                     </div>
                     <div class="input-group">
-                        <label for="t5_3">Behemoth:</label>
                         <input type="number" id="t5_3" placeholder="Behemoth (T5)">
                     </div>
                     <div class="input-group">
-                        <label for="t5_4">Hercules:</label>
                         <input type="number" id="t5_4" placeholder="Hercules (T5)">
                     </div>
                 </div>
 
-                <button type="button" onclick="calculateTroops()">Calculate</button>
+                <button type="button" id="calculateBtn" onclick="calculateTroops()">Calculate</button>
             </form>
 
             <div class="tier-selector">
@@ -105,7 +91,6 @@
                     <option value="T1">T1 Troops</option>
                     <option value="T2">T2 Troops</option>
                     <option value="T3">T3 Troops</option>
-                    <option value="T4">T4 Troops</option>
                     <option value="T5">T5 Troops</option>
                 </select>
             </div>
@@ -117,6 +102,10 @@
         </section>
     </main>
 
+    <footer>
+        <p>Made with ❤️ for Lords Mobile fans.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
-                            </html>
+</html>
